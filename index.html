@@ -1,1094 +1,536 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hà Sơn Lân | Sinh viên K29 Ngành Logistics - ĐH Bình Dương</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-color: #f4f7fb;
-      --surface-color: #ffffff;
-      --surface-soft: #f8fafc;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --accent-primary: #0284c7;
-      --accent-secondary: #0ea5e9;
-      --accent-emerald: #10b981;
-      --border-color: #e2e8f0;
-      --nav-bg: rgba(244, 247, 251, 0.85);
-      --card-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.08);
-      --tag-bg: #e0f2fe;
-      --tag-text: #0369a1;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #090e1a;
-      --surface-color: #11192b;
-      --surface-soft: #172238;
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --accent-primary: #38bdf8;
-      --accent-secondary: #0284c7;
-      --accent-emerald: #34d399;
-      --border-color: #1e293b;
-      --nav-bg: rgba(9, 14, 26, 0.85);
-      --card-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.45);
-      --tag-bg: rgba(56, 189, 248, 0.14);
-      --tag-text: #38bdf8;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-primary);
-      line-height: 1.65;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      background-image: radial-gradient(circle at 10% 10%, rgba(2, 132, 199, 0.06), transparent 35%),
-                        radial-gradient(circle at 90% 25%, rgba(16, 185, 129, 0.05), transparent 35%);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 22px;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 70px;
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      letter-spacing: -0.3px;
-    }
-
-    .logo-badge {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-emerald));
-      color: #fff;
-      font-size: 0.74rem;
-      padding: 3px 9px;
-      border-radius: 7px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-primary);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .icon-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      background: var(--surface-color);
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .icon-btn:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-1px);
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 64px 0 48px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.85fr;
-      gap: 38px;
-      align-items: center;
-    }
-
-    .student-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 0.84rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4.2vw, 3.05rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      letter-spacing: -0.6px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-emerald));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      font-size: 1.03rem;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      max-width: 540px;
-    }
-
-    .hero-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 26px;
-    }
-
-    .meta-badge {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      padding: 6px 12px;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-primary), #0369a1);
-      color: #ffffff;
-      box-shadow: 0 8px 18px -6px rgba(2, 132, 199, 0.45);
-    }
-
-    .btn-secondary {
-      background: var(--surface-color);
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-    }
-
-    /* Student ID Card */
-    .profile-card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 26px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-banner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 104px;
-      background: linear-gradient(135deg, #0284c7, #0ea5e9 55%, #10b981);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 14px 18px;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-    }
-
-    .avatar-wrapper {
-      position: relative;
-      width: 136px;
-      height: 136px;
-      margin: 34px auto 14px;
-      z-index: 2;
-    }
-
-    .avatar-box {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--surface-soft);
-      border: 4px solid var(--surface-color);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.2);
-      color: var(--text-secondary);
-    }
-
-    .avatar-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
-      display: block;
-    }
-
-    .avatar-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      text-align: center;
-      padding: 10px;
-      gap: 4px;
-    }
-
-    .upload-btn {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--surface-color);
-      border: 2px solid var(--accent-primary);
-      color: var(--accent-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s;
-    }
-
-    .upload-btn:hover {
-      transform: scale(1.08);
-    }
-
-    .profile-card h3 {
-      font-size: 1.28rem;
-      font-weight: 800;
-      margin-bottom: 2px;
-    }
-
-    .profile-card .major {
-      font-size: 0.9rem;
-      color: var(--accent-primary);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .quick-info {
-      text-align: left;
-      background: var(--surface-soft);
-      border: 1px solid var(--border-color);
-      padding: 14px 16px;
-      border-radius: 16px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px dashed var(--border-color);
-      padding-bottom: 6px;
-    }
-
-    .info-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .info-row strong {
-      color: var(--text-primary);
-      font-weight: 600;
-      text-align: right;
-      word-break: break-all;
-    }
-
-    /* Section Styling */
-    section {
-      padding: 56px 0;
-    }
-
-    .section-title-group {
-      margin-bottom: 30px;
-    }
-
-    .section-kicker {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--accent-primary);
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-    }
-
-    /* Bento Grid */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .bento-card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .bento-span-2 {
-      grid-column: span 2;
-    }
-
-    .bento-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .bento-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .goal-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .goal-list li {
-      font-size: 0.91rem;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    /* Skills */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-box {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .skill-box h3 {
-      font-size: 1.1rem;
-      margin-bottom: 16px;
-    }
-
-    .progress-item {
-      margin-bottom: 15px;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .progress-label span:last-child {
-      color: var(--accent-primary);
-    }
-
-    .progress-bar {
-      height: 8px;
-      background: var(--surface-soft);
-      border-radius: 99px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-    }
-
-    .progress-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-emerald));
-    }
-
-    .tags-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      padding: 7px 13px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    /* Activities */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 22px;
-    }
-
-    .activity-card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .activity-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-primary);
-    }
-
-    .card-type {
-      align-self: flex-start;
-      padding: 4px 11px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      margin-bottom: 14px;
-    }
-
-    .activity-card h3 {
-      font-size: 1.14rem;
-      margin-bottom: 8px;
-    }
-
-    .activity-card p {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      margin-bottom: 18px;
-      flex: 1;
-    }
-
-    .card-meta {
-      font-size: 0.84rem;
-      color: var(--text-secondary);
-      padding-top: 14px;
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-    }
-
-    /* Contact */
-    .contact-box {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 26px;
-      padding: 36px;
-      box-shadow: var(--card-shadow);
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 36px;
-    }
-
-    .contact-text h3 {
-      font-size: 1.48rem;
-      margin-bottom: 12px;
-    }
-
-    .contact-text p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-    }
-
-    .contact-direct {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 22px;
-      font-size: 0.93rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      font-weight: 500;
-    }
-
-    .contact-item a {
-      color: var(--accent-primary);
-      font-weight: 600;
-      word-break: break-all;
-    }
-
-    .social-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .social-pill {
-      padding: 9px 15px;
-      border-radius: 10px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border-color);
-      font-size: 0.87rem;
-      font-weight: 600;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .social-pill:hover {
-      border-color: var(--accent-primary);
-      color: var(--accent-primary);
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 13px 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      background: var(--surface-soft);
-      color: var(--text-primary);
-      font-family: inherit;
-      font-size: 0.94rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .contact-form input:focus, .contact-form textarea:focus {
-      border-color: var(--accent-primary);
-    }
-
-    .success-msg {
-      display: none;
-      color: var(--accent-emerald);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 32px 0;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      border-top: 1px solid var(--border-color);
-      margin-top: 32px;
-    }
-
-    /* Responsive */
-    @media (max-width: 880px) {
-      .hero, .bento-grid, .contact-box {
-        grid-template-columns: 1fr;
-      }
-
-      .bento-span-2 {
-        grid-column: span 1;
-      }
-
-      .hero {
-        padding: 36px 0;
-      }
-
-      .contact-box {
-        padding: 24px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--surface-color);
-        border-bottom: 1px solid var(--border-color);
-        flex-direction: column;
-        padding: 20px;
-        gap: 16px;
-        display: none;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <div class="container nav-wrapper">
-      <a href="#" class="logo">
-        HaSonLan <span class="logo-badge">K29 • BDU</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">Giới thiệu</a></li>
-        <li><a href="#skills">Kỹ năng</a></li>
-        <li><a href="#activities">Hoạt động</a></li>
-        <li><a href="#contact">Liên hệ</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" title="Đổi giao diện Sáng/Tối">☀️</button>
-        <button class="icon-btn menu-toggle" id="menuToggle" title="Mở menu">☰</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- Hero -->
-    <section class="hero">
-      <div>
-        <div class="student-pill">🎓 Sinh viên năm nhất • Khóa K29 • Trường ĐH Bình Dương</div>
-        <h1>Xin chào! Mình là <span>Hà Sơn Lân</span></h1>
-        <p class="hero-desc">
-          Tân sinh viên chuyên ngành <strong>Logistics</strong> tại Trường Đại học Bình Dương (BDU).
-          Mình yêu thích tìm hiểu về quản lý chuỗi cung ứng, vận tải đa phương thức, xuất nhập khẩu và luôn chủ động học hỏi để phát triển bản thân ngay từ năm nhất.
-        </p>
-
-        <div class="hero-meta-row">
-          <span class="meta-badge">🆔 MSSV: 26220119</span>
-          <span class="meta-badge">📦 Ngành: Logistics</span>
-          <span class="meta-badge">🏫 Khóa K29</span>
-        </div>
-
-        <div class="hero-btns">
-          <a href="mailto:26220119@student.bdu.edu.vn" class="btn btn-primary">✉️ Gửi Email Sinh Viên</a>
-          <a href="tel:0967219693" class="btn btn-secondary">📞 0967 219 693</a>
-        </div>
-      </div>
-
-      <!-- Thẻ thông tin sinh viên -->
-      <div class="profile-card">
-        <div class="card-banner">
-          <span>BDU STUDENT CARD</span>
-          <span>KHÓA K29</span>
-        </div>
-
-        <div class="avatar-wrapper">
-          <div class="avatar-box">
-            <!-- Đặt ảnh của bạn tên là avatar.jpg cùng thư mục, hoặc bấm nút máy ảnh bên dưới -->
-            <img id="avatarImg" src="avatar.jpg" alt="Ảnh đại diện Hà Sơn Lân" />
-            <div id="avatarFallback" class="avatar-fallback">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Bấm 📷 để gắn ảnh</span>
-            </div>
-          </div>
-          <label for="avatarInput" class="upload-btn" title="Chọn ảnh đại diện từ máy">📷</label>
-          <input type="file" id="avatarInput" accept="image/*" hidden />
-        </div>
-
-        <h3>Hà Sơn Lân</h3>
-        <div class="major">Sinh viên Ngành Logistics • K29</div>
-
-        <div class="quick-info">
-          <div class="info-row">
-            <span>🏫 Trường</span>
-            <strong>ĐH Bình Dương (BDU)</strong>
-          </div>
-          <div class="info-row">
-            <span>🆔 MSSV</span>
-            <strong>26220119</strong>
-          </div>
-          <div class="info-row">
-            <span>📞 SĐT</span>
-            <strong>0967 219 693</strong>
-          </div>
-          <div class="info-row">
-            <span>📧 Email</span>
-            <strong>26220119@student.bdu.edu.vn</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About & Goals -->
-    <section id="about">
-      <div class="section-title-group">
-        <div class="section-kicker">Hành trang K29</div>
-        <h2 class="section-title">Giới thiệu & Mục tiêu năm nhất</h2>
-      </div>
-
-      <div class="bento-grid">
-        <div class="bento-card bento-span-2">
-          <h3>👋 Đôi nét về bản thân</h3>
-          <p>
-            Là một tân sinh viên Khóa K29 tại Trường Đại học Bình Dương, mình xem năm nhất là bước đệm quan trọng để xây dựng tư duy đại học và nền tảng kiến thức ngành. Theo học <strong>Logistics</strong> ngay tại Bình Dương – trung tâm công nghiệp và kho vận lớn của phía Nam – mang lại cho mình rất nhiều động lực để tìm hiểu thực tế về cảng cạn ICD, kho bãi và chuỗi cung ứng.
-          </p>
-          <p>
-            Ngoài giờ học trên giảng đường, mình tập trung trau dồi tin học văn phòng, tiếng Anh chuyên ngành và tham gia các hoạt động tập thể để mở rộng kết nối với thầy cô, anh chị khóa trên và bạn bè cùng khóa.
-          </p>
-        </div>
-
-        <div class="bento-card">
-          <h3>🎯 Mục tiêu học tập</h3>
-          <ul class="goal-list">
-            <li><span>✅</span> Giữ vững GPA từ 3.2/4.0 trở lên trong năm nhất</li>
-            <li><span>✅</span> Nâng cao Tiếng Anh giao tiếp & hướng tới TOEIC 650+</li>
-            <li><span>✅</span> Thành thạo Excel & các công cụ văn phòng phục vụ Logistics</li>
-            <li><span>✅</span> Tích cực tham gia CLB & hoạt động Đoàn – Hội tại BDU</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills & Interests -->
-    <section id="skills">
-      <div class="section-title-group">
-        <div class="section-kicker">Phát triển bản thân</div>
-        <h2 class="section-title">Kỹ năng & Sở thích</h2>
-      </div>
-
-      <div class="skills-container">
-        <div class="skill-box">
-          <h3>📦 Nền tảng đang rèn luyện</h3>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span>Tin học văn phòng (Excel, Word, PPT)</span>
-              <span>80%</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span>Nhập môn Logistics & Chuỗi cung ứng</span>
-              <span>70%</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">
-              <span>Tiếng Anh giao tiếp & chuyên ngành</span>
-              <span>65%</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-box">
-          <h3>🤝 Kỹ năng mềm</h3>
-          <div class="tags-wrap">
-            <span class="chip">Làm việc nhóm (Teamwork)</span>
-            <span class="chip">Giao tiếp & Lắng nghe</span>
-            <span class="chip">Quản lý thời gian</span>
-            <span class="chip">Thuyết trình bài nhóm</span>
-            <span class="chip">Chủ động học hỏi</span>
-            <span class="chip">Tinh thần trách nhiệm</span>
-          </div>
-        </div>
-
-        <div class="skill-box">
-          <h3>🎧 Sở thích cá nhân</h3>
-          <div class="tags-wrap">
-            <span class="chip">⚽ Thể thao & Đá bóng</span>
-            <span class="chip">📚 Đọc sách kinh tế</span>
-            <span class="chip">📷 Chụp ảnh & Khám phá</span>
-            <span class="chip">☕ Cà phê trò chuyện</span>
-            <span class="chip">💻 Tìm hiểu công nghệ</span>
-            <span class="chip">🎵 Nghe nhạc thư giãn</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Activities & Projects -->
-    <section id="activities">
-      <div class="section-title-group">
-        <div class="section-kicker">Dấu ấn sinh viên</div>
-        <h2 class="section-title">Hoạt động & Dự án đầu tay</h2>
-      </div>
-
-      <div class="cards-grid">
-        <article class="activity-card">
-          <span class="card-type">Sinh viên K29</span>
-          <h3>Hành trình tại Đại học Bình Dương</h3>
-          <p>Tham gia tuần sinh hoạt công dân đầu khóa, các buổi định hướng nghề nghiệp ngành Logistics và kết nối cùng tập thể sinh viên K29.</p>
-          <div class="card-meta">
-            <span>Khóa K29 • BDU</span>
-            <span>2026 - Hiện tại</span>
-          </div>
-        </article>
-
-        <article class="activity-card">
-          <span class="card-type">Hồ sơ số</span>
-          <h3>Website Profile Sinh viên đầu tiên</h3>
-          <p>Xây dựng trang web hồ sơ cá nhân tích hợp thẻ sinh viên, thông tin liên hệ và hành trình học tập nhằm chuyên nghiệp hóa hình ảnh bản thân.</p>
-          <div class="card-meta">
-            <span>HTML • CSS • JS</span>
-            <span>Hoàn thành</span>
-          </div>
-        </article>
-
-        <article class="activity-card">
-          <span class="card-type">Học phần cơ sở</span>
-          <h3>Tìm hiểu Chuỗi cung ứng & Logistics xanh</h3>
-          <p>Thực hiện báo cáo nhóm tìm hiểu về xu hướng chuyển đổi số, tối ưu kho bãi và vận tải bền vững tại các khu công nghiệp Bình Dương.</p>
-          <div class="card-meta">
-            <span>Nghiên cứu nhóm</span>
-            <span>Năm nhất</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="contact-box">
-        <div class="contact-text">
-          <div class="section-kicker">Kết nối nhanh</div>
-          <h3>Rất vui được làm quen với bạn!</h3>
-          <p>
-            Nếu bạn là bạn học cùng khóa K29 tại Trường Đại học Bình Dương, anh/chị khóa trên ngành Logistics hoặc cần trao đổi công việc học tập, hãy liên hệ với mình qua các kênh dưới đây nhé.
-          </p>
-
-          <div class="contact-direct">
-            <div class="contact-item">
-              <span>📧 Email:</span>
-              <a href="mailto:26220119@student.bdu.edu.vn">26220119@student.bdu.edu.vn</a>
-            </div>
-            <div class="contact-item">
-              <span>📞 SĐT / Zalo:</span>
-              <a href="tel:0967219693">0967 219 693</a>
-            </div>
-            <div class="contact-item">
-              <span>🏫 Thông tin:</span>
-              <span>ĐH Bình Dương • K29 • MSSV: 26220119</span>
-            </div>
-          </div>
-
-          <div class="social-pills">
-            <a href="tel:0967219693" class="social-pill">📞 Gọi điện</a>
-            <a href="mailto:26220119@student.bdu.edu.vn" class="social-pill">✉️ Gửi Email</a>
-            <a href="https://zalo.me/0967219693" target="_blank" rel="noopener" class="social-pill">💬 Nhắn Zalo</a>
-          </div>
-        </div>
-
-        <form class="contact-form" id="contactForm">
-          <input type="text" id="senderName" placeholder="Tên của bạn" required />
-          <input type="text" id="senderContact" placeholder="SĐT, Zalo hoặc Email của bạn" required />
-          <textarea id="senderMsg" rows="4" placeholder="Lời nhắn gửi đến Hà Sơn Lân..." required></textarea>
-          <button type="submit" class="btn btn-primary" style="justify-content: center;">Gửi lời chào ngay</button>
-          <div class="success-msg" id="successMsg">✓ Đã ghi nhận lời nhắn! Cảm ơn bạn đã kết nối với Hà Sơn Lân.</div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Hà Sơn Lân • Khóa K29 • MSSV: 26220119 • Ngành Logistics - Trường Đại học Bình Dương</p>
-    </div>
-  </footer>
-
-  <script>
-    // 1. Light / Dark Mode
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlEl = document.documentElement;
-
-    if (localStorage.getItem('sv_theme') === 'dark') {
-      htmlEl.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '🌙';
-    }
-
-    themeToggle.addEventListener('click', () => {
-      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        htmlEl.removeAttribute('data-theme');
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('sv_theme', 'light');
-      } else {
-        htmlEl.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('sv_theme', 'dark');
-      }
-    });
-
-    // 2. Mobile Menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    navLinks.querySelectorAll('a').forEach(item => {
-      item.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
-
-    // 3. Avatar Handler (Tự nhận avatar.jpg hoặc cho phép tải ảnh trực tiếp)
-    const avatarImg = document.getElementById('avatarImg');
-    const avatarFallback = document.getElementById('avatarFallback');
-    const avatarInput = document.getElementById('avatarInput');
-
-    const savedAvatar = localStorage.getItem('bdu_k29_avatar');
-    if (savedAvatar) {
-      avatarImg.src = savedAvatar;
-    }
-
-    avatarImg.addEventListener('error', () => {
-      avatarImg.style.display = 'none';
-      avatarFallback.style.display = 'flex';
-    });
-
-    avatarImg.addEventListener('load', () => {
-      avatarImg.style.display = 'block';
-      avatarFallback.style.display = 'none';
-    });
-
-    avatarInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const dataUrl = event.target.result;
-        avatarImg.src = dataUrl;
-        avatarImg.style.display = 'block';
-        avatarFallback.style.display = 'none';
-        try {
-          localStorage.setItem('bdu_k29_avatar', dataUrl);
-        } catch (err) {
-          // Bỏ qua nếu ảnh quá lớn vượt giới hạn localStorage
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hà Sơn Lân | Hồ Sơ Năng Lực Số - Logistics K29 BDU</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        bdu: {
+                            dark: '#233647',
+                            primary: '#355068',
+                            accent: '#0284c7',
+                            light: '#f4f6f8',
+                        }
+                    }
+                }
+            }
         }
-      };
-      reader.readAsDataURL(file);
-    });
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-bdu-light text-slate-800 antialiased selection:bg-bdu-primary selection:text-white">
 
-    // 4. Contact Form Demo
-    const contactForm = document.getElementById('contactForm');
-    const successMsg = document.getElementById('successMsg');
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-lg bg-bdu-primary text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                        HL
+                    </div>
+                    <div>
+                        <span class="font-bold text-bdu-dark block leading-none">HÀ SƠN LÂN</span>
+                        <span class="text-[11px] font-medium text-slate-500 tracking-wider">PORTFOLIO SỐ • K29</span>
+                    </div>
+                </a>
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      successMsg.style.display = 'block';
-      contactForm.reset();
-      setTimeout(() => {
-        successMsg.style.display = 'none';
-      }, 4500);
-    });
-  </script>
+                <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
+                    <a href="#gioi-thieu" class="hover:text-bdu-primary transition">Giới thiệu</a>
+                    <a href="#ky-nang" class="hover:text-bdu-primary transition">Kỹ năng & Công cụ</a>
+                    <a href="#du-an" class="hover:text-bdu-primary transition">Sản phẩm thực tế</a>
+                    <a href="#dao-duc-so" class="hover:text-bdu-primary transition">Đạo đức AI & NĐ 13</a>
+                    <a href="#lien-he" class="px-4 py-2 bg-bdu-primary text-white rounded-lg hover:bg-bdu-dark transition shadow-sm">
+                        Liên hệ
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden text-slate-700 p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-3 space-y-2 text-sm font-medium">
+            <a href="#gioi-thieu" class="block py-2 text-slate-700 hover:text-bdu-primary">Giới thiệu</a>
+            <a href="#ky-nang" class="block py-2 text-slate-700 hover:text-bdu-primary">Kỹ năng & Công cụ</a>
+            <a href="#du-an" class="block py-2 text-slate-700 hover:text-bdu-primary">Sản phẩm thực tế</a>
+            <a href="#dao-duc-so" class="block py-2 text-slate-700 hover:text-bdu-primary">Đạo đức AI & NĐ 13</a>
+            <a href="#lien-he" class="block py-2 text-bdu-primary font-bold">Liên hệ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-bdu-dark via-bdu-primary to-[#436482] text-white py-16 lg:py-24">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-12">
+                <!-- Left Info -->
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs font-semibold tracking-wide uppercase">
+                            <i class="fa-solid fa-graduation-cap mr-1.5"></i>Đại học Bình Dương (BDU)
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-sky-500/25 border border-sky-300/30 text-sky-100 text-xs font-semibold">
+                            Khóa K29 • Lớp 29LG01
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-300/30 text-emerald-100 text-xs font-semibold">
+                            MSSV: 26220119
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                        HÀ SƠN LÂN
+                    </h1>
+                    <p class="text-xl sm:text-2xl text-sky-100 font-medium mb-5">
+                        Sinh viên năm nhất ngành <span class="text-white font-bold underline decoration-sky-400 underline-offset-4">Logistics</span>
+                    </p>
+                    <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
+                        "Khai thác thông tin số — Sáng tạo nội dung số — Ứng dụng AI có trách nhiệm."
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <a href="#du-an" class="px-6 py-3 bg-white text-bdu-dark font-bold rounded-xl shadow-lg hover:bg-sky-50 transition flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open"></i> Xem hồ sơ dự án
+                        </a>
+                        <a href="#lien-he" class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold rounded-xl transition flex items-center gap-2">
+                            <i class="fa-regular fa-envelope"></i> 26220119@student.bdu.edu.vn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Avatar -->
+                <div class="flex flex-col items-center">
+                    <div class="relative group">
+                        <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border-4 border-white/80 shadow-2xl bg-slate-200 relative">
+                            <!-- 
+                                HƯỚNG DẪN THAY ẢNH: 
+                                Đổi link trong src="..." thành tên file ảnh thẻ của bạn (ví dụ: src="avatar.jpg") 
+                                Hoặc bấm nút "Chọn ảnh thẻ" ngay bên dưới để xem thử trực tiếp trên trình duyệt.
+                            -->
+                            <img id="avatar-preview" 
+                                 src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Avatar Hà Sơn Lân - 26220119" 
+                                 class="w-full h-full object-cover object-top">
+                        </div>
+
+                        <!-- Badge Logistic -->
+                        <div class="absolute -bottom-3 -right-3 bg-white text-bdu-dark px-3.5 py-2 rounded-xl shadow-lg border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-bdu-accent"></i>
+                            <div class="text-left">
+                                <p class="text-[10px] font-bold uppercase text-slate-400 leading-none">Ngành học</p>
+                                <p class="text-xs font-extrabold leading-tight">Logistics K29</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nút thử thay ảnh trực tiếp -->
+                    <label for="avatar-upload" class="mt-6 cursor-pointer inline-flex items-center gap-1.5 text-xs text-sky-200 hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full transition">
+                        <i class="fa-solid fa-camera"></i> Tải ảnh thẻ của bạn lên để xem thử
+                        <input id="avatar-upload" type="file" accept="image/*" class="hidden">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Giới thiệu, Điểm mạnh & Định hướng -->
+    <section id="gioi-thieu" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-bdu-accent">Hồ sơ cá nhân</span>
+            <h2 class="text-3xl font-extrabold text-bdu-dark mt-1">Giới thiệu & Định hướng</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card Giới thiệu -->
+            <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-sky-50 text-bdu-accent flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3 class="text-xl font-bold text-bdu-dark mb-3">Giới thiệu bản thân</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Xin chào, tôi là <strong>Hà Sơn Lân</strong> (MSSV: <strong>26220119</strong>), hiện là sinh viên năm nhất ngành <strong>Logistics</strong> tại Trường Đại học Bình Dương (BDU). Với tinh thần chủ động và khao khát học hỏi, tôi đặt mục tiêu xây dựng nền tảng tri thức vững chắc và phát triển bản thân toàn diện ngay từ năm đầu tiên.
+                </p>
+            </div>
+
+            <!-- Card Điểm mạnh -->
+            <div class="bg-white p-7 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="text-xl font-bold text-bdu-dark mb-3">Điểm mạnh nổi bật</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Khả năng tự học, tư duy logic cùng kỹ năng ứng dụng các công cụ AI như <strong>ChatGPT, Claude, Gemini</strong> để tối ưu hóa nghiên cứu. Đặc biệt là kỹ năng tạo lập câu lệnh (Prompt Engineering) chuẩn xác để biến AI thành trợ lý đắc lực trong học thuật lẫn thực tiễn.
+                </p>
+            </div>
+
+            <!-- Card Định hướng -->
+            <div class="bg-bdu-primary text-white p-7 rounded-2xl shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-xl bg-white/15 text-white flex items-center justify-center text-xl mb-5">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Định hướng nghề nghiệp</h3>
+                <p class="text-slate-100 text-sm leading-relaxed">
+                    Phát triển trở thành một chuyên gia chuyên nghiệp trong lĩnh vực <strong>Logistics & Chuỗi cung ứng</strong>, đồng thời không ngừng cập nhật công nghệ mới và năng lực số để tạo ra nhiều giá trị thiết thực cho doanh nghiệp và xã hội.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Kỹ năng & Hệ sinh thái công cụ -->
+    <section id="ky-nang" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-bdu-accent">Học phần Năng lực số</span>
+                <h2 class="text-3xl font-extrabold text-bdu-dark mt-1">Kỹ năng thực hành & Công cụ sử dụng</h2>
+            </div>
+
+            <!-- 3 Nhóm kỹ năng từ Trang 6-7 -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-bdu-primary text-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass text-sky-300"></i> Khai thác & Quản lý thông tin
+                    </h3>
+                    <ul class="space-y-2.5 text-sm text-slate-100">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Tìm kiếm thông tin nâng cao trên Google & Google Scholar</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Kiểm chứng độ tin cậy của nguồn tin & đa phương tiện</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Lưu trữ và phân quyền tài liệu khoa học trên Google Drive</li>
+                    </ul>
+                </div>
+
+                <div class="bg-bdu-primary text-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sky-300"></i> Sáng tạo nội dung số
+                    </h3>
+                    <ul class="space-y-2.5 text-sm text-slate-100">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Thiết kế ấn phẩm, CV và Portfolio trên Canva</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Biên tập & chỉnh sửa video chuyên nghiệp bằng CapCut</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-300 mt-1"></i> Sáng tạo âm thanh/nhạc bằng Suno AI & xây dựng bài thuyết trình</li>
+                    </ul>
+                </div>
+
+                <div class="bg-bdu-dark text-white rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-robot text-emerald-300"></i> Ứng dụng AI & Bảo mật
+                    </h3>
+                    <ul class="space-y-2.5 text-sm text-slate-100">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-300 mt-1"></i> Sử dụng thành thạo ChatGPT, Gemini, NotebookLM</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-300 mt-1"></i> Viết câu lệnh (Prompt) hiệu quả theo ngữ cảnh</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-300 mt-1"></i> Kiểm tra kết quả AI, tránh đạo văn & bảo vệ dữ liệu cá nhân</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hệ sinh thái công cụ từ Trang 8 -->
+            <div class="bg-bdu-light rounded-2xl p-6 sm:p-8 border border-slate-200">
+                <h3 class="text-lg font-bold text-bdu-dark mb-5 text-center">Hệ sinh thái công cụ đã vận dụng</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-book-open"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Khai thác thông tin</p>
+                            <p class="text-slate-500 text-xs">Google, Google Scholar</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-shield-halved"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Xác thực đa phương tiện</p>
+                            <p class="text-slate-500 text-xs">Google Lens, TinEye, QuillBot AI Detector</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-film"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Âm thanh / Video / Đồ họa</p>
+                            <p class="text-slate-500 text-xs">Suno AI, CapCut, Canva</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-microchip"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Trí tuệ nhân tạo & Prompt</p>
+                            <p class="text-slate-500 text-xs">ChatGPT, Gemini, Claude, NotebookLM</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"><i class="fa-brands fa-google-drive"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Bảo mật & Lưu trữ</p>
+                            <p class="text-slate-500 text-xs">Google Drive, Grammarly</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-globe"></i></span>
+                        <div>
+                            <p class="font-bold text-slate-800">Định danh & Truyền thông</p>
+                            <p class="text-slate-500 text-xs">Google Sites, YouTube Shorts, Canva Web</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Dự án & Sản phẩm thực hành (Trang 9 - 13) -->
+    <section id="du-an" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-bdu-accent">Minh chứng học tập</span>
+            <h2 class="text-3xl font-extrabold text-bdu-dark mt-1">Các dự án đã thực hiện</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Dự án 1 -->
+            <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col">
+                <div class="bg-bdu-primary text-white px-6 py-4 flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-white/15 px-2.5 py-1 rounded">Dự án 01 • Bài tập nhóm</span>
+                    <i class="fa-solid fa-music text-sky-200 text-lg"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-bdu-dark mb-2">Sử dụng AI tạo bài hát "Vòng Tay Mẹ"</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Mục tiêu:</strong> Ứng dụng trí tuệ nhân tạo vào sáng tạo âm nhạc, kết hợp công cụ chỉnh sửa để tạo ra sản phẩm Video Karaoke hoàn chỉnh.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1.5 mb-5">
+                        <p><strong>Vai trò:</strong> Hỗ trợ xây dựng nội dung, nhập prompt yêu cầu AI viết lyric, kiểm tra nội dung và hoàn thiện sản phẩm cùng nhóm.</p>
+                        <p><strong>Bài học:</strong> Hiểu sâu hơn về khả năng sáng tạo nội dung bằng AI và rèn kỹ năng làm việc nhóm, kiểm duyệt trước khi nộp bài.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">ChatGPT</span>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Gemini</span>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Suno AI</span>
+                            <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Canva</span>
+                        </div>
+                        <a href="https://drive.google.com/drive/u/3/folders/18EYXZTW1Q2NFHIWR-ARUBIAIBW9RDURD" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-1.5 text-xs font-bold text-bdu-accent hover:underline">
+                            Xem kho minh chứng Drive <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Dự án 2 -->
+            <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col">
+                <div class="bg-bdu-primary text-white px-6 py-4 flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-white/15 px-2.5 py-1 rounded">Dự án 02 • Nghiên cứu số</span>
+                    <i class="fa-solid fa-magnifying-glass-chart text-sky-200 text-lg"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-bdu-dark mb-2">Tìm kiếm nâng cao & Kiểm chứng thông tin</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Mục tiêu:</strong> Rèn luyện kỹ năng tìm kiếm tài liệu học thuật, truy xuất nguồn gốc hình ảnh và phát hiện văn bản AI thông qua nghiên cứu nhóm.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1.5 mb-5">
+                        <p><strong>Vai trò:</strong> Tìm kiếm, thu thập, chọn lọc thông tin; phối hợp thành viên hoàn thành nhiệm vụ và tổng hợp sản phẩm.</p>
+                        <p><strong>Minh chứng thực hiện:</strong> Tra cứu bài báo trên Google Scholar, tìm kiếm qua hình ảnh (Google Lens), kiểm tra AI với QuillBot và tổ chức thư mục cá nhân trên Drive.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Google Scholar</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Google Lens</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">QuillBot AI Detector</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Google Drive</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Dự án 3 -->
+            <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col">
+                <div class="bg-bdu-primary text-white px-6 py-4 flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-white/15 px-2.5 py-1 rounded">Dự án 03 • Định danh số</span>
+                    <i class="fa-solid fa-id-card text-sky-200 text-lg"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-bdu-dark mb-2">Tạo Portfolio & CV nhóm trên Canva</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Mục tiêu:</strong> Ứng dụng trí tuệ nhân tạo vào việc thiết kế sơ đồ nhóm và hoàn thiện CV chuyên nghiệp cho từng cá nhân.
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1.5 mb-5">
+                        <p><strong>Vai trò:</strong> Dựa trên prompt hướng dẫn của giảng viên, sử dụng ChatGPT tạo ảnh chân dung AI và xây dựng bảng tóm tắt thông tin từng thành viên trong nhóm.</p>
+                        <p><strong>Bài học:</strong> Biết cách tối ưu thời gian khi thiết kế CV/Portfolio hiện đại, đơn giản nhưng chuyên nghiệp.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Canva</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">ChatGPT</span>
+                        <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Gemini</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Dự án 4 -->
+            <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col">
+                <div class="bg-bdu-dark text-white px-6 py-4 flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider bg-emerald-500/25 text-emerald-200 px-2.5 py-1 rounded">Dự án 04 • Liêm chính học thuật</span>
+                    <i class="fa-solid fa-scale-balanced text-emerald-300 text-lg"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-bdu-dark mb-2">Đạo đức, Minh bạch AI & Audio NotebookLM</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>Mục tiêu:</strong> Thực hành sử dụng AI có trách nhiệm, khai báo minh bạch và chuyển hóa tri thức thành định dạng âm thanh (Podcast/Audio).
+                    </p>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-600 space-y-1.5 mb-5">
+                        <p><strong>Sản phẩm 1 (BT22):</strong> Nhật ký phản tư "Tôi liêm chính số" (~250 từ) tự vấn 5 câu hỏi đạo đức khi dùng AI.</p>
+                        <p><strong>Sản phẩm 2:</strong> Phiếu minh bạch AI & Cam kết bảo vệ dữ liệu cá nhân theo NĐ 13/2023/NĐ-CP.</p>
+                        <p><strong>Sản phẩm 3 (BT24):</strong> Xuất bản file Audio <code>BT24_hasonlan.m4a</code> từ NotebookLM.</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded">NotebookLM</span>
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded">ChatGPT</span>
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded">NĐ 13/2023/NĐ-CP</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Section 4: Cam kết Đạo đức số, Minh bạch AI & NĐ 13 -->
+    <section id="dao-duc-so" class="py-14 bg-bdu-dark text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/5 border border-white/15 rounded-3xl p-7 sm:p-10">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-6 pb-6 border-b border-white/10">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Cam kết Liêm chính số</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold mt-1">Minh bạch AI & Bảo vệ dữ liệu (NĐ 13)</h2>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl text-xs font-semibold">
+                        <i class="fa-brands fa-creative-commons text-lg text-sky-300"></i>
+                        <span>Bản quyền mở CC BY-NC 4.0</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-200 leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i> Tuyên bố sử dụng AI có trách nhiệm
+                        </h4>
+                        <p>
+                            Trong quá trình xây dựng hồ sơ năng lực số, tôi sử dụng các công cụ AI (ChatGPT, Gemini, NotebookLM, Suno AI) ở vai trò gợi mở ý tưởng, tối ưu câu chữ và tạo nguyên liệu đa phương tiện. Phần cốt lõi nội dung đều do cá nhân tự biên tập, đối chiếu lại với giáo trình và tài liệu học thuật uy tín để tránh sai lệch kiến thức.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-lock text-sky-400"></i> Bảo vệ dữ liệu cá nhân (NĐ 13/2023/NĐ-CP)
+                        </h4>
+                        <p>
+                            Không đưa thông tin nhạy cảm (CCCD, mật khẩu, dữ liệu riêng tư của người khác khi chưa được đồng ý) vào các công cụ AI công cộng. Các tài liệu nhóm được lưu trữ và phân quyền truy cập hợp lý trên Google Drive cá nhân/học tập.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Liên hệ & Footer -->
+    <footer id="lien-he" class="bg-white border-t border-slate-200 pt-14 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-10 items-center pb-10 border-b border-slate-200">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-bdu-dark mb-2">Thông tin liên hệ</h2>
+                    <p class="text-slate-600 text-sm mb-6">
+                        Cảm ơn quý thầy cô và các bạn đã dành thời gian xem Hồ sơ Năng lực số của tôi. Rất mong nhận được sự kết nối và góp ý!
+                    </p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <span class="w-9 h-9 rounded-lg bg-bdu-light flex items-center justify-center text-bdu-primary"><i class="fa-solid fa-id-badge"></i></span>
+                            <span><strong>Họ tên:</strong> Hà Sơn Lân — <strong>MSSV:</strong> 26220119 — <strong>Lớp:</strong> 29LG01</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <span class="w-9 h-9 rounded-lg bg-bdu-light flex items-center justify-center text-bdu-primary"><i class="fa-solid fa-phone"></i></span>
+                            <a href="tel:0967219693" class="hover:text-bdu-accent font-medium">0967 219 693</a>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <span class="w-9 h-9 rounded-lg bg-bdu-light flex items-center justify-center text-bdu-primary"><i class="fa-solid fa-envelope"></i></span>
+                            <a href="mailto:26220119@student.bdu.edu.vn" class="hover:text-bdu-accent font-medium">26220119@student.bdu.edu.vn</a>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <span class="w-9 h-9 rounded-lg bg-bdu-light flex items-center justify-center text-bdu-primary"><i class="fa-solid fa-building-columns"></i></span>
+                            <span>Ngành Logistics (K29) — Trường Đại học Bình Dương (BDU)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card tóm tắt nhanh để giảng viên chấm điểm -->
+                <div class="bg-bdu-light p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-bold text-bdu-dark mb-3 text-sm uppercase tracking-wider">Tóm tắt Hồ sơ học phần</h3>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-slate-400 block">Năm học</span>
+                            <strong class="text-slate-800 text-sm">2026 - 2027</strong>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-slate-400 block">Học phần</span>
+                            <strong class="text-slate-800 text-sm">Năng lực số</strong>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-slate-400 block">Chuyên ngành</span>
+                            <strong class="text-slate-800 text-sm">Logistics (K29)</strong>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-slate-400 block">Trạng thái</span>
+                            <strong class="text-emerald-600 text-sm">Đã hoàn thiện</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+                <p>© 2026 Hà Sơn Lân (MSSV: 26220119). Hồ sơ Năng lực số - Đại học Bình Dương.</p>
+                <p>Phát hành theo giấy phép mở Creative Commons (CC BY-NC 4.0).</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script xử lý Menu Mobile & Xem trước Avatar -->
+    <script>
+        // Toggle mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Đóng mobile menu khi bấm link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Cho phép chọn ảnh thẻ từ máy để xem thử trực tiếp
+        const avatarUpload = document.getElementById('avatar-upload');
+        const avatarPreview = document.getElementById('avatar-preview');
+        avatarUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    avatarPreview.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
-</html> 
+</html>
