@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hà Sơn Lân | Sinh viên năm nhất Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #f0f9ff;
+      --surface-color: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent-color: #0284c7;
+      --accent-secondary: #10b981;
+      --border-color: #e2e8f0;
+      --nav-bg: rgba(240, 249, 255, 0.85);
+      --card-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
+      --tag-bg: #e0f2fe;
+      --tag-text: #0369a1;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #090d16;
+      --surface-color: #131c2e;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent-color: #38bdf8;
+      --accent-secondary: #34d399;
+      --border-color: #1e293b;
+      --nav-bg: rgba(9, 13, 22, 0.85);
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --tag-bg: rgba(56, 189, 248, 0.12);
+      --tag-text: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.65;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: border-color 0.2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent-color);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .student-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      max-width: 540px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-color), #0369a1);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--surface-color);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Student ID Style Card */
+    .profile-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 85px;
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    }
+
+    .avatar-box {
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      background: var(--surface-color);
+      border: 4px solid var(--surface-color);
+      margin: 24px auto 14px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .profile-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .profile-card .major {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .quick-info {
+      text-align: left;
+      background: var(--bg-color);
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title-group {
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-color);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    /* Bento Grid for About & Goals */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .bento-span-2 {
+      grid-column: span 2;
+    }
+
+    .bento-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bento-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .goal-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .goal-list li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* Skills & Hobbies */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-box {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .skill-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .progress-item {
+      margin-bottom: 14px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .progress-label span:last-child {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-color);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    }
+
+    .tags-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 13px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* Activities & Projects */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+    }
+
+    .activity-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color);
+    }
+
+    .card-type {
+      align-self: flex-start;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      margin-bottom: 14px;
+    }
+
+    .activity-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .activity-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-meta {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 36px;
+    }
+
+    .contact-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-text p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .contact-direct {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-size: 0.94rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .social-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-pill {
+      padding: 9px 16px;
+      border-radius: 10px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-pill:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.94rem;
+      outline: none;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--accent-color);
+    }
+
+    .success-msg {
+      display: none;
+      color: var(--accent-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero, .bento-grid, .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .bento-span-2 {
+        grid-column: span 1;
+      }
+
+      .hero {
+        padding: 40px 0;
+      }
+
+      .contact-box {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--surface-color);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">
+        HaSonLan <span class="logo-badge">K29</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#activities">Hoạt động & Dự án</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" title="Đổi giao diện Sáng/Tối">☀️</button>
+        <button class="icon-btn menu-toggle" id="menuToggle" title="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="student-pill">🎓 Sinh viên năm nhất • MSSV: 26220119</div>
+        <h1>Chào bạn! Mình là <span>Hà Sơn Lân</span></h1>
+        <p>
+          Sinh viên ngành Logistics tại Trường Đại học Bình Dương. 
+          Mình mang trong mình sự nhiệt huyết của tuổi trẻ, yêu thích tìm hiểu về chuỗi cung ứng, 
+          xuất nhập khẩu và luôn sẵn sàng kết nối với mọi người.
+        </p>
+        <div class="hero-btns">
+          <a href="#activities" class="btn btn-primary">Xem hành trình của mình</a>
+          <a href="tel:0967219693" class="btn btn-secondary">📞 Gọi: 0967 219 693</a>
+        </div>
+      </div>
+
+      <!-- Thẻ thông tin sinh viên -->
+      <div class="profile-card">
+        <div class="avatar-box">
+          <!-- Thay bằng ảnh thật của bạn: <img src="anh-cua-ban.jpg" style="width:100%; height:100%; object-fit:cover;"> -->
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <h3>Hà Sơn Lân</h3>
+        <div class="major">Ngành Logistics</div>
+        <div class="quick-info">
+          <div>🆔 <strong>MSSV:</strong> 26220119</div>
+          <div>🏫 <strong>Trường:</strong> Đại học Bình Dương</div>
+          <div>📞 <strong>Liên hệ:</strong> 0967 219 693</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Goals -->
+    <section id="about">
+      <div class="section-title-group">
+        <div class="section-kicker">Hành trang năm nhất</div>
+        <h2 class="section-title">Giới thiệu & Mục tiêu</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card bento-span-2">
+          <h3>👋 Đôi nét về bản thân</h3>
+          <p>
+            Là một tân sinh viên tại Trường Đại học Bình Dương, mình hiểu rằng năm nhất là khoảng thời gian quý giá để xây dựng nền tảng vững chắc. Theo học ngành Logistics tại một tỉnh công nghiệp năng động như Bình Dương là cơ hội lớn để mình tiếp cận thực tế với các khu công nghiệp, cảng cạn và hoạt động giao nhận hàng hóa.
+          </p>
+          <p>
+            Ngoài giờ lên lớp, mình dành thời gian trau dồi tin học văn phòng, nâng cao trình độ ngoại ngữ và tích cực tham gia các hoạt động phong trào của khoa, trường để rèn luyện kỹ năng mềm.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <h3>🎯 Mục tiêu năm học</h3>
+          <ul class="goal-list">
+            <li><span>✅</span> Duy trì GPA từ 3.2/4.0 trở lên</li>
+            <li><span>✅</span> Nâng cao Tiếng Anh giao tiếp & chuyên ngành (TOEIC 650+)</li>
+            <li><span>✅</span> Tham gia tích cực CLB của Trường ĐH Bình Dương</li>
+            <li><span>✅</span> Thành thạo Excel & tìm hiểu sớm nghiệp vụ Logistics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Interests -->
+    <section id="skills">
+      <div class="section-title-group">
+        <div class="section-kicker">Phát triển bản thân</div>
+        <h2 class="section-title">Kỹ năng & Sở thích</h2>
+      </div>
+
+      <div class="skills-container">
+        <!-- Kỹ năng đang học -->
+        <div class="skill-box">
+          <h3>📦 Kỹ năng đang rèn luyện</h3>
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Tin học văn phòng (Excel, Word, PPT)</span>
+              <span>Khá tốt</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Kiến thức nhập môn Logistics</span>
+              <span>Đang học</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Tiếng Anh giao tiếp</span>
+              <span>Đang trau dồi</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+          </div>
+        </div>
+
+        <!-- Kỹ năng mềm -->
+        <div class="skill-box">
+          <h3>🤝 Kỹ năng mềm</h3>
+          <div class="tags-wrap">
+            <span class="chip">Làm việc nhóm (Teamwork)</span>
+            <span class="chip">Giao tiếp & Đàm phán</span>
+            <span class="chip">Quản lý thời gian</span>
+            <span class="chip">Thuyết trình trước đám đông</span>
+            <span class="chip">Xử lý tình huống linh hoạt</span>
+            <span class="chip">Tinh thần trách nhiệm cao</span>
+          </div>
+        </div>
+
+        <!-- Sở thích -->
+        <div class="skill-box">
+          <h3>🎧 Sở thích cá nhân</h3>
+          <div class="tags-wrap">
+            <span class="chip">⚽ Thể thao & Đá bóng</span>
+            <span class="chip">🛌 Ngủ đủ giấc</span>
+            <span class="chip">📷 Khám phá địa điểm mới</span>
+            <span class="chip">☕ Cà phê cùng bạn bè</span>
+            <span class="chip">🎮 Chơi game giải trí</span>
+            <span class="chip">🎵 Nghe nhạc thư giãn</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities & Mini Projects -->
+    <section id="activities">
+      <div class="section-title-group">
+        <div class="section-kicker">Trải nghiệm đầu tiên</div>
+        <h2 class="section-title">Hoạt động & Dự án nhỏ</h2>
+      </div>
+
+      <div class="cards-grid">
+        <article class="activity-card">
+          <span class="card-type">Hoạt động Trường</span>
+          <h3>Thành viên tích cực tại ĐH Bình Dương</h3>
+          <p>Tham gia các hoạt động chào tân sinh viên, hội thảo định hướng nghề nghiệp ngành Logistics và các phong trào tình nguyện của sinh viên trường.</p>
+          <div class="card-meta">
+            <span>Vai trò: Sinh viên K29</span>
+            <span>2026 - Hiện tại</span>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <span class="card-type">Dự án tự học</span>
+          <h3>Website Profile cá nhân đầu tiên</h3>
+          <p>Tìm hiểu công nghệ web cơ bản để tự xây dựng trang web hồ sơ cá nhân nhằm giới thiệu bản thân và lưu giữ dấu ấn thời sinh viên.</p>
+          <div class="card-meta">
+            <span>Công cụ: HTML, CSS, JS</span>
+            <span>Hoàn thành</span>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <span class="card-type">Bài tập nhóm</span>
+          <h3>Nghiên cứu chủ đề Nhập môn Logistics</h3>
+          <p>Cùng các bạn trong lớp thực hiện bài thuyết trình về vai trò của Logistics xanh và chuyển đổi số trong chuỗi cung ứng hiện đại.</p>
+          <div class="card-meta">
+            <span>Vai trò: Thành viên nhóm</span>
+            <span>Học kỳ I</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact-box">
+        <div class="contact-text">
+          <div class="section-kicker">Kết nối bạn bè</div>
+          <h3>Rất vui được làm quen với bạn!</h3>
+          <p>
+            Nếu bạn là bạn cùng khóa tại Đại học Bình Dương, anh/chị khóa trên ngành Logistics hay muốn trao đổi, kết bạn, đừng ngại liên hệ với Lân nhé!
+          </p>
+          <div class="contact-direct">
+            <div>📞 Điện thoại / Zalo: <a href="tel:0967219693" style="color: var(--accent-color);">0967 219 693</a></div>
+            <div>🏫 Trường: Đại học Bình Dương (MSSV: 26220119)</div>
+          </div>
+          <div class="social-pills">
+            <a href="tel:0967219693" class="social-pill">📞 Gọi ngay</a>
+            <a href="#" class="social-pill">Zalo: 0967219693</a>
+            <a href="#" class="social-pill">Facebook</a>
+            <a href="#" class="social-pill">LinkedIn</a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <input type="text" placeholder="Tên của bạn (hoặc biệt danh)" required />
+          <input type="text" placeholder="Số điện thoại, Zalo hoặc Email liên hệ" required />
+          <textarea rows="3" placeholder="Bạn muốn nhắn nhủ điều gì với Hà Sơn Lân?" required></textarea>
+          <button type="submit" class="btn btn-primary" style="justify-content: center;">Gửi lời chào</button>
+          <div class="success-msg" id="successMsg">✓ Đã ghi nhận lời nhắn! Lân sẽ phản hồi bạn sớm nhất.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Hà Sơn Lân • MSSV: 26220119 • Sinh viên ngành Logistics - Đại học Bình Dương</p>
+    </div>
+  </footer>
+
+  <script>
+    // Light / Dark Mode
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    if (localStorage.getItem('sv_theme') === 'dark') {
+      htmlEl.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '🌙';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        htmlEl.removeAttribute('data-theme');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('sv_theme', 'light');
+      } else {
+        htmlEl.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('sv_theme', 'dark');
+      }
+    });
+
+    // Mobile Menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(item => {
+      item.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Contact Form Demo
+    const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'block';
+      contactForm.reset();
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 4000);
+    });
+  </script>
+</body>
+  </html>
